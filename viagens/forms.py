@@ -1,11 +1,12 @@
-#import email
-
-#from socketserver import ThreadingUnixDatagramServer
+from random import choices
+from secrets import choice
 from django import forms
+from django.forms import Textarea
 from tempus_dominus.widgets import DatePicker
 from datetime import datetime
 from viagens.classe_viagem import tipos_de_classe
 from viagens.validar import campo_temNumero, origem_destino_iguais, compara_data_ida_volta, compara_data_ida_pesquisa
+from viagens.validar import *
 
 class ViagemForms(forms.Form):
     origem = forms.CharField(label= 'Origem', max_length=100)
