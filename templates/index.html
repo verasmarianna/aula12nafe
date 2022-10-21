@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+{% load widget_tweaks %}
 
 <h1> Viagens </h1>
-<section class="col-6">
+<section class="container col-6">
     <form action="{% url 'consulta' %}", method="post">
         {% csrf_token %}
         {% for field in form.visible_fields %}
         <div class="form-group">
             <label for="{{field.id_for_label}}"> {{field.label}}</label>
-            {{field}}
+            {{field|add_class:'form-control'}}
         </div>
+        <section class="alert alert-danger" role="alert">
+        {{ field.errors }}
+        </section>
+        {% endfor %}
         {% endfor %}
     <input type="submit" value="Enviar" class="btn btn-success">
     </form>
 </section>
 {% endblock %}
+
+
+
